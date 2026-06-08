@@ -1796,12 +1796,15 @@ document.addEventListener('click', function(e){
     date: new Date().toISOString()
   };
 
-  /* mode:no-cors = la requête est envoyée sans preflight, le navigateur
-     n'a pas besoin de lire la réponse. Fiable depuis GitHub Pages. */
+  /* application/x-www-form-urlencoded = requête "simple" CORS → pas de
+     preflight, le navigateur l'envoie directement sans blocage. */
+  var formBody = Object.keys(payload).map(function(k){
+    return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k] || '');
+  }).join('&');
   fetch(MAKE_WEBHOOK, {
     method: 'POST',
-    mode: 'no-cors',
-    body: JSON.stringify(payload),
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: formBody,
     keepalive: true
   }).catch(function(err){ console.warn('Webhook:', err); });
 
