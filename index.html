@@ -746,6 +746,35 @@ section { position: relative; }
 ============================================================ */
 .scroll-anchor { position: relative; top: -60px; visibility: hidden; }
 
+
+/* ---- Configurateur : pills images, onglets, récap (ajout V1 web) ---- */
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+.config-opts { display: grid; gap: 10px; }
+.config-opts.cols2 { grid-template-columns: repeat(2,1fr); }
+.config-opts.cols3 { grid-template-columns: repeat(3,1fr); }
+.config-opts.cols4 { grid-template-columns: repeat(4,1fr); }
+.config-opts.cols5 { grid-template-columns: repeat(5,1fr); }
+.config-pill-img { padding: 0 !important; overflow: hidden; display: flex; flex-direction: column; align-items: stretch; border: 1px solid var(--gris-clair) !important; background:#fff; cursor:pointer; }
+.config-pill-img img { width: 100%; height: 80px; object-fit: cover; display: block; flex-shrink: 0; transition: opacity .2s; pointer-events:none; }
+.config-pill-img span { display: block; padding: 7px 8px; font-size: 10px; text-align: center; line-height: 1.3; pointer-events:none; }
+.config-pill-img.active { border-color: var(--noir) !important; border-width: 2px !important; }
+.config-pill-img.active img { opacity: .65; }
+.config-pill-img.active span { background: var(--noir); color: #fff; font-weight: 600; }
+.config-pill .pname, .config-pill .pmeta { pointer-events:none; }
+.config-pill-color .pcap { pointer-events:none; }
+.cfg-line { display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:11px 0; border-top:1px solid var(--gris-clair); }
+.cfg-line:first-child { border-top:0; }
+.cfg-line .cfg-lb { font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--gris-moyen); font-weight:500; }
+.cfg-line .sv { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; text-align:right; color:var(--noir); }
+.cfg-line .sv.empty { font-style:normal; font-size:12px; color:var(--gris-clair); }
+@media (max-width: 700px) {
+  .config-opts.cols5 { grid-template-columns: repeat(3,1fr); }
+  .config-opts.cols4 { grid-template-columns: repeat(2,1fr); }
+  .config-opts.cols3 { grid-template-columns: repeat(3,1fr); }
+  .config-pill-img img { height: 64px; }
+}
+
 </style>
 <style>.sw-int-blanc { background-color: #f0ece4; }</style>
 <style id="viewer-mode">
@@ -1020,10 +1049,10 @@ section { position: relative; }
       <p class="lede">La gamme de base — quatre finitions extérieures incluses dans le prix de chaque modèle. Du blanc lumineux au bois foncé chaleureux.</p>
     </div>
     <div class="swatch-grid">
-      <button class="swatch-card" data-lb-group="ext-inc" data-lb-name="Blanc" data-lb-ref="MHE · 01" data-lb-cat="Couleur extérieure incluse" data-lb-img="./ext-blanc-anthracite.jpg"><div class="swatch-img short" style="background-image:url('./ext-blanc-anthracite.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc</span><span class="swatch-ref">MHE · 01</span></div></button>
-      <button class="swatch-card" data-lb-group="ext-inc" data-lb-name="Bois Clair" data-lb-ref="MHE · 02" data-lb-cat="Couleur extérieure incluse" data-lb-img="./ext-bois-clair.jpg"><div class="swatch-img short" style="background-image:url('./ext-bois-clair.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bois Clair</span><span class="swatch-ref">MHE · 02</span></div></button>
-      <button class="swatch-card" data-lb-group="ext-inc" data-lb-name="Anthracite Uni" data-lb-ref="MHE · 03" data-lb-cat="Couleur extérieure incluse" data-lb-img="./ext-anthracite.jpg"><div class="swatch-img short" style="background-image:url('./ext-anthracite.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Anthracite Uni</span><span class="swatch-ref">MHE · 03</span></div></button>
-      <button class="swatch-card" data-lb-group="ext-inc" data-lb-name="Bois Foncé" data-lb-ref="MHE · 04" data-lb-cat="Couleur extérieure incluse" data-lb-img="./ext-bois-fonce.jpg"><div class="swatch-img short" style="background-image:url('./ext-bois-fonce.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bois Foncé</span><span class="swatch-ref">MHE · 04</span></div></button>
+      <button class="swatch-card" data-lb-group="ext-inc" data-lb-name="Blanc" data-lb-ref="MHE · 01" data-lb-cat="Couleur extérieure incluse" data-lb-img="assets/ext-blanc-anthracite.jpg"><div class="swatch-img short" style="background-image:url('assets/ext-blanc-anthracite.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc</span><span class="swatch-ref">MHE · 01</span></div></button>
+      <button class="swatch-card" data-lb-group="ext-inc" data-lb-name="Bois Clair" data-lb-ref="MHE · 02" data-lb-cat="Couleur extérieure incluse" data-lb-img="assets/ext-bois-clair.jpg"><div class="swatch-img short" style="background-image:url('assets/ext-bois-clair.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bois Clair</span><span class="swatch-ref">MHE · 02</span></div></button>
+      <button class="swatch-card" data-lb-group="ext-inc" data-lb-name="Anthracite Uni" data-lb-ref="MHE · 03" data-lb-cat="Couleur extérieure incluse" data-lb-img="assets/ext-anthracite.jpg"><div class="swatch-img short" style="background-image:url('assets/ext-anthracite.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Anthracite Uni</span><span class="swatch-ref">MHE · 03</span></div></button>
+      <button class="swatch-card" data-lb-group="ext-inc" data-lb-name="Bois Foncé" data-lb-ref="MHE · 04" data-lb-cat="Couleur extérieure incluse" data-lb-img="assets/ext-bois-fonce.jpg"><div class="swatch-img short" style="background-image:url('assets/ext-bois-fonce.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bois Foncé</span><span class="swatch-ref">MHE · 04</span></div></button>
     </div>
   </div>
 </section>
@@ -1045,15 +1074,15 @@ section { position: relative; }
       <p class="lede">Neuf essences pour habiller votre maison — du pin clair au cèdre rouge. Chaque lame imite le veinage du bois naturel avec la robustesse du panneau métallique.</p>
     </div>
     <div class="swatch-grid dense">
-      <button class="swatch-card" data-lb-group="bois" data-lb-name="Pin Clair" data-lb-ref="GM · 16" data-lb-cat="Façade bois" data-lb-img="./tex-bois-gm-16.jpg"><div class="swatch-img" style="background-image:url('./tex-bois-gm-16.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Pin Clair</span><span class="swatch-ref">GM · 16</span></div></button>
-      <button class="swatch-card" data-lb-group="bois" data-lb-name="Chêne Doré" data-lb-ref="GM · 17" data-lb-cat="Façade bois" data-lb-img="./tex-bois-gm-17.jpg"><div class="swatch-img" style="background-image:url('./tex-bois-gm-17.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Chêne Doré</span><span class="swatch-ref">GM · 17</span></div></button>
-      <button class="swatch-card" data-lb-group="bois" data-lb-name="Acajou" data-lb-ref="GM · 18" data-lb-cat="Façade bois" data-lb-img="./tex-bois-gm-18.jpg"><div class="swatch-img" style="background-image:url('./tex-bois-gm-18.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Acajou</span><span class="swatch-ref">GM · 18</span></div></button>
-      <button class="swatch-card" data-lb-group="bois" data-lb-name="Chêne Rustique" data-lb-ref="GM · 19" data-lb-cat="Façade bois" data-lb-img="./tex-bois-gm-19.jpg"><div class="swatch-img" style="background-image:url('./tex-bois-gm-19.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Chêne Rustique</span><span class="swatch-ref">GM · 19</span></div></button>
-      <button class="swatch-card" data-lb-group="bois" data-lb-name="Bois Miel" data-lb-ref="GM · 20" data-lb-cat="Façade bois" data-lb-img="./tex-bois-gm-20.jpg"><div class="swatch-img" style="background-image:url('./tex-bois-gm-20.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bois Miel</span><span class="swatch-ref">GM · 20</span></div></button>
-      <button class="swatch-card" data-lb-group="bois" data-lb-name="Wengé" data-lb-ref="GM · 21" data-lb-cat="Façade bois" data-lb-img="./tex-bois-gm-21.jpg"><div class="swatch-img" style="background-image:url('./tex-bois-gm-21.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Wengé</span><span class="swatch-ref">GM · 21</span></div></button>
-      <button class="swatch-card" data-lb-group="bois" data-lb-name="Érable Clair" data-lb-ref="GM · 22" data-lb-cat="Façade bois" data-lb-img="./tex-bois-gm-22.jpg"><div class="swatch-img" style="background-image:url('./tex-bois-gm-22.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Érable Clair</span><span class="swatch-ref">GM · 22</span></div></button>
-      <button class="swatch-card" data-lb-group="bois" data-lb-name="Olivier" data-lb-ref="GM · 23" data-lb-cat="Façade bois" data-lb-img="./tex-bois-gm-23.jpg"><div class="swatch-img" style="background-image:url('./tex-bois-gm-23.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Olivier</span><span class="swatch-ref">GM · 23</span></div></button>
-      <button class="swatch-card" data-lb-group="bois" data-lb-name="Cèdre Rouge" data-lb-ref="GM · 24" data-lb-cat="Façade bois" data-lb-img="./tex-bois-gm-24.jpg"><div class="swatch-img" style="background-image:url('./tex-bois-gm-24.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Cèdre Rouge</span><span class="swatch-ref">GM · 24</span></div></button>
+      <button class="swatch-card" data-lb-group="bois" data-lb-name="Pin Clair" data-lb-ref="GM · 16" data-lb-cat="Façade bois" data-lb-img="assets/tex-bois-gm-16.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bois-gm-16.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Pin Clair</span><span class="swatch-ref">GM · 16</span></div></button>
+      <button class="swatch-card" data-lb-group="bois" data-lb-name="Chêne Doré" data-lb-ref="GM · 17" data-lb-cat="Façade bois" data-lb-img="assets/tex-bois-gm-17.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bois-gm-17.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Chêne Doré</span><span class="swatch-ref">GM · 17</span></div></button>
+      <button class="swatch-card" data-lb-group="bois" data-lb-name="Acajou" data-lb-ref="GM · 18" data-lb-cat="Façade bois" data-lb-img="assets/tex-bois-gm-18.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bois-gm-18.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Acajou</span><span class="swatch-ref">GM · 18</span></div></button>
+      <button class="swatch-card" data-lb-group="bois" data-lb-name="Chêne Rustique" data-lb-ref="GM · 19" data-lb-cat="Façade bois" data-lb-img="assets/tex-bois-gm-19.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bois-gm-19.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Chêne Rustique</span><span class="swatch-ref">GM · 19</span></div></button>
+      <button class="swatch-card" data-lb-group="bois" data-lb-name="Bois Miel" data-lb-ref="GM · 20" data-lb-cat="Façade bois" data-lb-img="assets/tex-bois-gm-20.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bois-gm-20.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bois Miel</span><span class="swatch-ref">GM · 20</span></div></button>
+      <button class="swatch-card" data-lb-group="bois" data-lb-name="Wengé" data-lb-ref="GM · 21" data-lb-cat="Façade bois" data-lb-img="assets/tex-bois-gm-21.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bois-gm-21.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Wengé</span><span class="swatch-ref">GM · 21</span></div></button>
+      <button class="swatch-card" data-lb-group="bois" data-lb-name="Érable Clair" data-lb-ref="GM · 22" data-lb-cat="Façade bois" data-lb-img="assets/tex-bois-gm-22.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bois-gm-22.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Érable Clair</span><span class="swatch-ref">GM · 22</span></div></button>
+      <button class="swatch-card" data-lb-group="bois" data-lb-name="Olivier" data-lb-ref="GM · 23" data-lb-cat="Façade bois" data-lb-img="assets/tex-bois-gm-23.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bois-gm-23.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Olivier</span><span class="swatch-ref">GM · 23</span></div></button>
+      <button class="swatch-card" data-lb-group="bois" data-lb-name="Cèdre Rouge" data-lb-ref="GM · 24" data-lb-cat="Façade bois" data-lb-img="assets/tex-bois-gm-24.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bois-gm-24.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Cèdre Rouge</span><span class="swatch-ref">GM · 24</span></div></button>
     </div>
   </div>
 </section>
@@ -1074,12 +1103,12 @@ section { position: relative; }
       <p class="lede">Six teintes brique pour une façade au caractère traditionnel. Du blanc lumineux au gris pierre, chaque finition imite l'aspect texturé d'une vraie maçonnerie.</p>
     </div>
     <div class="swatch-grid dense">
-      <button class="swatch-card" data-lb-group="brique" data-lb-name="Blanc Pur" data-lb-ref="GM · 01" data-lb-cat="Façade brique" data-lb-img="./tex-brique-gm-01.jpg"><div class="swatch-img" style="background-image:url('./tex-brique-gm-01.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc Pur</span><span class="swatch-ref">GM · 01</span></div></button>
-      <button class="swatch-card" data-lb-group="brique" data-lb-name="Ivoire" data-lb-ref="GM · 02" data-lb-cat="Façade brique" data-lb-img="./tex-brique-gm-02.jpg"><div class="swatch-img" style="background-image:url('./tex-brique-gm-02.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Ivoire</span><span class="swatch-ref">GM · 02</span></div></button>
-      <button class="swatch-card" data-lb-group="brique" data-lb-name="Rose Poudré" data-lb-ref="GM · 03" data-lb-cat="Façade brique" data-lb-img="./tex-brique-gm-03.jpg"><div class="swatch-img" style="background-image:url('./tex-brique-gm-03.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Rose Poudré</span><span class="swatch-ref">GM · 03</span></div></button>
-      <button class="swatch-card" data-lb-group="brique" data-lb-name="Beige Doré" data-lb-ref="GM · 04" data-lb-cat="Façade brique" data-lb-img="./tex-brique-gm-04.jpg"><div class="swatch-img" style="background-image:url('./tex-brique-gm-04.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Beige Doré</span><span class="swatch-ref">GM · 04</span></div></button>
-      <button class="swatch-card" data-lb-group="brique" data-lb-name="Sable Désert" data-lb-ref="GM · 05" data-lb-cat="Façade brique" data-lb-img="./tex-brique-gm-05.jpg"><div class="swatch-img" style="background-image:url('./tex-brique-gm-05.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Sable Désert</span><span class="swatch-ref">GM · 05</span></div></button>
-      <button class="swatch-card" data-lb-group="brique" data-lb-name="Gris Pierre" data-lb-ref="GM · 06" data-lb-cat="Façade brique" data-lb-img="./tex-brique-gm-06.jpg"><div class="swatch-img" style="background-image:url('./tex-brique-gm-06.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Gris Pierre</span><span class="swatch-ref">GM · 06</span></div></button>
+      <button class="swatch-card" data-lb-group="brique" data-lb-name="Blanc Pur" data-lb-ref="GM · 01" data-lb-cat="Façade brique" data-lb-img="assets/tex-brique-gm-01.jpg"><div class="swatch-img" style="background-image:url('assets/tex-brique-gm-01.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc Pur</span><span class="swatch-ref">GM · 01</span></div></button>
+      <button class="swatch-card" data-lb-group="brique" data-lb-name="Ivoire" data-lb-ref="GM · 02" data-lb-cat="Façade brique" data-lb-img="assets/tex-brique-gm-02.jpg"><div class="swatch-img" style="background-image:url('assets/tex-brique-gm-02.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Ivoire</span><span class="swatch-ref">GM · 02</span></div></button>
+      <button class="swatch-card" data-lb-group="brique" data-lb-name="Rose Poudré" data-lb-ref="GM · 03" data-lb-cat="Façade brique" data-lb-img="assets/tex-brique-gm-03.jpg"><div class="swatch-img" style="background-image:url('assets/tex-brique-gm-03.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Rose Poudré</span><span class="swatch-ref">GM · 03</span></div></button>
+      <button class="swatch-card" data-lb-group="brique" data-lb-name="Beige Doré" data-lb-ref="GM · 04" data-lb-cat="Façade brique" data-lb-img="assets/tex-brique-gm-04.jpg"><div class="swatch-img" style="background-image:url('assets/tex-brique-gm-04.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Beige Doré</span><span class="swatch-ref">GM · 04</span></div></button>
+      <button class="swatch-card" data-lb-group="brique" data-lb-name="Sable Désert" data-lb-ref="GM · 05" data-lb-cat="Façade brique" data-lb-img="assets/tex-brique-gm-05.jpg"><div class="swatch-img" style="background-image:url('assets/tex-brique-gm-05.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Sable Désert</span><span class="swatch-ref">GM · 05</span></div></button>
+      <button class="swatch-card" data-lb-group="brique" data-lb-name="Gris Pierre" data-lb-ref="GM · 06" data-lb-cat="Façade brique" data-lb-img="assets/tex-brique-gm-06.jpg"><div class="swatch-img" style="background-image:url('assets/tex-brique-gm-06.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Gris Pierre</span><span class="swatch-ref">GM · 06</span></div></button>
     </div>
   </div>
 </section>
@@ -1100,13 +1129,13 @@ section { position: relative; }
       <p class="lede">Sept finitions à lames verticales pour une façade contemporaine et structurée. Effets bois, gris urbains et bicolores audacieux — une signature architecturale forte.</p>
     </div>
     <div class="swatch-grid dense">
-      <button class="swatch-card" data-lb-group="lames" data-lb-name="Pin Orangé" data-lb-ref="GM · 86" data-lb-cat="Lames horizontales" data-lb-img="./tex-bardage-gm-86.jpg"><div class="swatch-img" style="background-image:url('./tex-bardage-gm-86.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Pin Orangé</span><span class="swatch-ref">GM · 86</span></div></button>
-      <button class="swatch-card" data-lb-group="lames" data-lb-name="Acajou Veiné" data-lb-ref="GM · 87" data-lb-cat="Lames horizontales" data-lb-img="./tex-bardage-gm-87.jpg"><div class="swatch-img" style="background-image:url('./tex-bardage-gm-87.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Acajou Veiné</span><span class="swatch-ref">GM · 87</span></div></button>
-      <button class="swatch-card" data-lb-group="lames" data-lb-name="Gris Clair" data-lb-ref="GM · 88" data-lb-cat="Lames horizontales" data-lb-img="./tex-bardage-gm-88.jpg"><div class="swatch-img" style="background-image:url('./tex-bardage-gm-88.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Gris Clair</span><span class="swatch-ref">GM · 88</span></div></button>
-      <button class="swatch-card" data-lb-group="lames" data-lb-name="Gris Urbain" data-lb-ref="GM · 89" data-lb-cat="Lames horizontales" data-lb-img="./tex-bardage-gm-89.jpg"><div class="swatch-img" style="background-image:url('./tex-bardage-gm-89.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Gris Urbain</span><span class="swatch-ref">GM · 89</span></div></button>
-      <button class="swatch-card" data-lb-group="lames" data-lb-name="Blanc Pur" data-lb-ref="GM · 90" data-lb-cat="Lames horizontales" data-lb-img="./tex-bardage-gm-90.jpg"><div class="swatch-img" style="background-image:url('./tex-bardage-gm-90.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc Pur</span><span class="swatch-ref">GM · 90</span></div></button>
-      <button class="swatch-card" data-lb-group="lames" data-lb-name="Bleu Pâle" data-lb-ref="GM · 91" data-lb-cat="Lames horizontales" data-lb-img="./tex-bardage-gm-91.jpg"><div class="swatch-img" style="background-image:url('./tex-bardage-gm-91.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bleu Pâle</span><span class="swatch-ref">GM · 91</span></div></button>
-      <button class="swatch-card" data-lb-group="lames" data-lb-name="Bicolore Noir" data-lb-ref="GM · 92" data-lb-cat="Lames horizontales" data-lb-img="./tex-bardage-gm-92.jpg"><div class="swatch-img" style="background-image:url('./tex-bardage-gm-92.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bicolore Noir</span><span class="swatch-ref">GM · 92</span></div></button>
+      <button class="swatch-card" data-lb-group="lames" data-lb-name="Pin Orangé" data-lb-ref="GM · 86" data-lb-cat="Lames horizontales" data-lb-img="assets/tex-bardage-gm-86.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bardage-gm-86.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Pin Orangé</span><span class="swatch-ref">GM · 86</span></div></button>
+      <button class="swatch-card" data-lb-group="lames" data-lb-name="Acajou Veiné" data-lb-ref="GM · 87" data-lb-cat="Lames horizontales" data-lb-img="assets/tex-bardage-gm-87.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bardage-gm-87.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Acajou Veiné</span><span class="swatch-ref">GM · 87</span></div></button>
+      <button class="swatch-card" data-lb-group="lames" data-lb-name="Gris Clair" data-lb-ref="GM · 88" data-lb-cat="Lames horizontales" data-lb-img="assets/tex-bardage-gm-88.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bardage-gm-88.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Gris Clair</span><span class="swatch-ref">GM · 88</span></div></button>
+      <button class="swatch-card" data-lb-group="lames" data-lb-name="Gris Urbain" data-lb-ref="GM · 89" data-lb-cat="Lames horizontales" data-lb-img="assets/tex-bardage-gm-89.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bardage-gm-89.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Gris Urbain</span><span class="swatch-ref">GM · 89</span></div></button>
+      <button class="swatch-card" data-lb-group="lames" data-lb-name="Blanc Pur" data-lb-ref="GM · 90" data-lb-cat="Lames horizontales" data-lb-img="assets/tex-bardage-gm-90.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bardage-gm-90.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc Pur</span><span class="swatch-ref">GM · 90</span></div></button>
+      <button class="swatch-card" data-lb-group="lames" data-lb-name="Bleu Pâle" data-lb-ref="GM · 91" data-lb-cat="Lames horizontales" data-lb-img="assets/tex-bardage-gm-91.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bardage-gm-91.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bleu Pâle</span><span class="swatch-ref">GM · 91</span></div></button>
+      <button class="swatch-card" data-lb-group="lames" data-lb-name="Bicolore Noir" data-lb-ref="GM · 92" data-lb-cat="Lames horizontales" data-lb-img="assets/tex-bardage-gm-92.jpg"><div class="swatch-img" style="background-image:url('assets/tex-bardage-gm-92.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bicolore Noir</span><span class="swatch-ref">GM · 92</span></div></button>
     </div>
   </div>
 </section>
@@ -1127,22 +1156,22 @@ section { position: relative; }
       <p class="lede">Seize finitions texturées — la gamme la plus complète de la collection. Du blanc texturé au camouflage forêt, en passant par les bois rainurés et les teintes vives.</p>
     </div>
     <div class="swatch-grid dense">
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Blanc Texturé" data-lb-ref="GM · 44" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-44.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-44.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc Texturé</span><span class="swatch-ref">GM · 44</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Beige Sablé" data-lb-ref="GM · 45" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-45.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-45.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Beige Sablé</span><span class="swatch-ref">GM · 45</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Anthracite" data-lb-ref="GM · 46" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-46.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-46.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Anthracite</span><span class="swatch-ref">GM · 46</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Jaune Désert" data-lb-ref="GM · 47" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-47.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-47.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Jaune Désert</span><span class="swatch-ref">GM · 47</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Bleu Marine" data-lb-ref="GM · 48" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-48.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-48.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bleu Marine</span><span class="swatch-ref">GM · 48</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Rouge Brique" data-lb-ref="GM · 49" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-49.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-49.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Rouge Brique</span><span class="swatch-ref">GM · 49</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Camo. Désert" data-lb-ref="GM · 50" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-50.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-50.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Camo. Désert</span><span class="swatch-ref">GM · 50</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Camo. Forêt" data-lb-ref="GM · 51" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-51.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-51.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Camo. Forêt</span><span class="swatch-ref">GM · 51</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Brun Rainuré" data-lb-ref="GM · 52" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-52.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-52.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Brun Rainuré</span><span class="swatch-ref">GM · 52</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Gris Rainuré" data-lb-ref="GM · 53" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-53.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-53.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Gris Rainuré</span><span class="swatch-ref">GM · 53</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Beige Rainuré" data-lb-ref="GM · 54" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-54.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-54.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Beige Rainuré</span><span class="swatch-ref">GM · 54</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Bois Rainuré" data-lb-ref="GM · 55" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-55.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-55.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bois Rainuré</span><span class="swatch-ref">GM · 55</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Blanc Rainuré" data-lb-ref="GM · 56" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-56.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-56.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc Rainuré</span><span class="swatch-ref">GM · 56</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Doré Rainuré" data-lb-ref="GM · 57" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-57.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-57.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Doré Rainuré</span><span class="swatch-ref">GM · 57</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Anthracite Texturé" data-lb-ref="GM · 58" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-58.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-58.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Anthracite Texturé</span><span class="swatch-ref">GM · 58</span></div></button>
-      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Rose Texturé" data-lb-ref="GM · 59" data-lb-cat="Façade texturée" data-lb-img="./tex-orange-gm-59.jpg"><div class="swatch-img" style="background-image:url('./tex-orange-gm-59.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Rose Texturé</span><span class="swatch-ref">GM · 59</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Blanc Texturé" data-lb-ref="GM · 44" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-44.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-44.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc Texturé</span><span class="swatch-ref">GM · 44</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Beige Sablé" data-lb-ref="GM · 45" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-45.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-45.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Beige Sablé</span><span class="swatch-ref">GM · 45</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Anthracite" data-lb-ref="GM · 46" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-46.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-46.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Anthracite</span><span class="swatch-ref">GM · 46</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Jaune Désert" data-lb-ref="GM · 47" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-47.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-47.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Jaune Désert</span><span class="swatch-ref">GM · 47</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Bleu Marine" data-lb-ref="GM · 48" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-48.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-48.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bleu Marine</span><span class="swatch-ref">GM · 48</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Rouge Brique" data-lb-ref="GM · 49" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-49.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-49.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Rouge Brique</span><span class="swatch-ref">GM · 49</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Camo. Désert" data-lb-ref="GM · 50" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-50.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-50.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Camo. Désert</span><span class="swatch-ref">GM · 50</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Camo. Forêt" data-lb-ref="GM · 51" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-51.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-51.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Camo. Forêt</span><span class="swatch-ref">GM · 51</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Brun Rainuré" data-lb-ref="GM · 52" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-52.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-52.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Brun Rainuré</span><span class="swatch-ref">GM · 52</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Gris Rainuré" data-lb-ref="GM · 53" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-53.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-53.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Gris Rainuré</span><span class="swatch-ref">GM · 53</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Beige Rainuré" data-lb-ref="GM · 54" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-54.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-54.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Beige Rainuré</span><span class="swatch-ref">GM · 54</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Bois Rainuré" data-lb-ref="GM · 55" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-55.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-55.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bois Rainuré</span><span class="swatch-ref">GM · 55</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Blanc Rainuré" data-lb-ref="GM · 56" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-56.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-56.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc Rainuré</span><span class="swatch-ref">GM · 56</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Doré Rainuré" data-lb-ref="GM · 57" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-57.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-57.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Doré Rainuré</span><span class="swatch-ref">GM · 57</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Anthracite Texturé" data-lb-ref="GM · 58" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-58.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-58.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Anthracite Texturé</span><span class="swatch-ref">GM · 58</span></div></button>
+      <button class="swatch-card" data-lb-group="texturees" data-lb-name="Rose Texturé" data-lb-ref="GM · 59" data-lb-cat="Façade texturée" data-lb-img="assets/tex-orange-gm-59.jpg"><div class="swatch-img" style="background-image:url('assets/tex-orange-gm-59.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Rose Texturé</span><span class="swatch-ref">GM · 59</span></div></button>
     </div>
   </div>
 </section>
@@ -1163,14 +1192,14 @@ section { position: relative; }
       <p class="lede">Huit finitions planes pour une façade épurée et minimaliste. Du blanc immaculé au bleu ardoise, en passant par les rainures discrètes et les motifs tissés.</p>
     </div>
     <div class="swatch-grid dense">
-      <button class="swatch-card" data-lb-group="planes" data-lb-name="Blanc Pur" data-lb-ref="GM · 61" data-lb-cat="Façade plane" data-lb-img="./tex-plat-gm-61.jpg"><div class="swatch-img" style="background-image:url('./tex-plat-gm-61.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc Pur</span><span class="swatch-ref">GM · 61</span></div></button>
-      <button class="swatch-card" data-lb-group="planes" data-lb-name="Ivoire" data-lb-ref="GM · 62" data-lb-cat="Façade plane" data-lb-img="./tex-plat-gm-62.jpg"><div class="swatch-img" style="background-image:url('./tex-plat-gm-62.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Ivoire</span><span class="swatch-ref">GM · 62</span></div></button>
-      <button class="swatch-card" data-lb-group="planes" data-lb-name="Gris Clair" data-lb-ref="GM · 63" data-lb-cat="Façade plane" data-lb-img="./tex-plat-gm-63.jpg"><div class="swatch-img" style="background-image:url('./tex-plat-gm-63.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Gris Clair</span><span class="swatch-ref">GM · 63</span></div></button>
-      <button class="swatch-card" data-lb-group="planes" data-lb-name="Bleu Ardoise" data-lb-ref="GM · 64" data-lb-cat="Façade plane" data-lb-img="./tex-plat-gm-64.jpg"><div class="swatch-img" style="background-image:url('./tex-plat-gm-64.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bleu Ardoise</span><span class="swatch-ref">GM · 64</span></div></button>
-      <button class="swatch-card" data-lb-group="planes" data-lb-name="Anthracite Rainuré" data-lb-ref="GM · 65" data-lb-cat="Façade plane" data-lb-img="./tex-plat-gm-65.jpg"><div class="swatch-img" style="background-image:url('./tex-plat-gm-65.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Anthracite Rainuré</span><span class="swatch-ref">GM · 65</span></div></button>
-      <button class="swatch-card" data-lb-group="planes" data-lb-name="Blanc Rainuré" data-lb-ref="GM · 66" data-lb-cat="Façade plane" data-lb-img="./tex-plat-gm-66.jpg"><div class="swatch-img" style="background-image:url('./tex-plat-gm-66.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc Rainuré</span><span class="swatch-ref">GM · 66</span></div></button>
-      <button class="swatch-card" data-lb-group="planes" data-lb-name="Pierre Argentée" data-lb-ref="GM · 67" data-lb-cat="Façade plane" data-lb-img="./tex-plat-gm-67.jpg"><div class="swatch-img" style="background-image:url('./tex-plat-gm-67.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Pierre Argentée</span><span class="swatch-ref">GM · 67</span></div></button>
-      <button class="swatch-card" data-lb-group="planes" data-lb-name="Lin Tissé" data-lb-ref="GM · 68" data-lb-cat="Façade plane" data-lb-img="./tex-plat-gm-68.jpg"><div class="swatch-img" style="background-image:url('./tex-plat-gm-68.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Lin Tissé</span><span class="swatch-ref">GM · 68</span></div></button>
+      <button class="swatch-card" data-lb-group="planes" data-lb-name="Blanc Pur" data-lb-ref="GM · 61" data-lb-cat="Façade plane" data-lb-img="assets/tex-plat-gm-61.jpg"><div class="swatch-img" style="background-image:url('assets/tex-plat-gm-61.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc Pur</span><span class="swatch-ref">GM · 61</span></div></button>
+      <button class="swatch-card" data-lb-group="planes" data-lb-name="Ivoire" data-lb-ref="GM · 62" data-lb-cat="Façade plane" data-lb-img="assets/tex-plat-gm-62.jpg"><div class="swatch-img" style="background-image:url('assets/tex-plat-gm-62.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Ivoire</span><span class="swatch-ref">GM · 62</span></div></button>
+      <button class="swatch-card" data-lb-group="planes" data-lb-name="Gris Clair" data-lb-ref="GM · 63" data-lb-cat="Façade plane" data-lb-img="assets/tex-plat-gm-63.jpg"><div class="swatch-img" style="background-image:url('assets/tex-plat-gm-63.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Gris Clair</span><span class="swatch-ref">GM · 63</span></div></button>
+      <button class="swatch-card" data-lb-group="planes" data-lb-name="Bleu Ardoise" data-lb-ref="GM · 64" data-lb-cat="Façade plane" data-lb-img="assets/tex-plat-gm-64.jpg"><div class="swatch-img" style="background-image:url('assets/tex-plat-gm-64.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Bleu Ardoise</span><span class="swatch-ref">GM · 64</span></div></button>
+      <button class="swatch-card" data-lb-group="planes" data-lb-name="Anthracite Rainuré" data-lb-ref="GM · 65" data-lb-cat="Façade plane" data-lb-img="assets/tex-plat-gm-65.jpg"><div class="swatch-img" style="background-image:url('assets/tex-plat-gm-65.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Anthracite Rainuré</span><span class="swatch-ref">GM · 65</span></div></button>
+      <button class="swatch-card" data-lb-group="planes" data-lb-name="Blanc Rainuré" data-lb-ref="GM · 66" data-lb-cat="Façade plane" data-lb-img="assets/tex-plat-gm-66.jpg"><div class="swatch-img" style="background-image:url('assets/tex-plat-gm-66.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Blanc Rainuré</span><span class="swatch-ref">GM · 66</span></div></button>
+      <button class="swatch-card" data-lb-group="planes" data-lb-name="Pierre Argentée" data-lb-ref="GM · 67" data-lb-cat="Façade plane" data-lb-img="assets/tex-plat-gm-67.jpg"><div class="swatch-img" style="background-image:url('assets/tex-plat-gm-67.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Pierre Argentée</span><span class="swatch-ref">GM · 67</span></div></button>
+      <button class="swatch-card" data-lb-group="planes" data-lb-name="Lin Tissé" data-lb-ref="GM · 68" data-lb-cat="Façade plane" data-lb-img="assets/tex-plat-gm-68.jpg"><div class="swatch-img" style="background-image:url('assets/tex-plat-gm-68.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Lin Tissé</span><span class="swatch-ref">GM · 68</span></div></button>
     </div>
   </div>
 </section>
@@ -1192,14 +1221,14 @@ section { position: relative; }
       <p class="lede">Huit essences pour habiller votre intérieur — du pin blanc au chêne fumé. Chaque lame imite les veinages du bois naturel avec la robustesse du PVC commercial.</p>
     </div>
     <div class="swatch-grid">
-      <button class="swatch-card" data-lb-group="sols" data-lb-name="Pin Blanc" data-lb-ref="SWD 20062202" data-lb-cat="Sol PVC bois" data-lb-img="./texture-pin-blanc.jpg"><div class="swatch-img tall" style="background-image:url('./texture-pin-blanc.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Pin Blanc</span><span class="swatch-ref">SWD 2202</span></div></button>
-      <button class="swatch-card" data-lb-group="sols" data-lb-name="Paulownia" data-lb-ref="SWD 20062031" data-lb-cat="Sol PVC bois" data-lb-img="./texture-paulownia.jpg"><div class="swatch-img tall" style="background-image:url('./texture-paulownia.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Paulownia</span><span class="swatch-ref">SWD 2031</span></div></button>
-      <button class="swatch-card" data-lb-group="sols" data-lb-name="Érable" data-lb-ref="SWD 20062027" data-lb-cat="Sol PVC bois" data-lb-img="./texture-erable.jpg"><div class="swatch-img tall" style="background-image:url('./texture-erable.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Érable</span><span class="swatch-ref">SWD 2027</span></div></button>
-      <button class="swatch-card" data-lb-group="sols" data-lb-name="Noyer Gris" data-lb-ref="SWD 20062030" data-lb-cat="Sol PVC bois" data-lb-img="./texture-noyer-gris.jpg"><div class="swatch-img tall" style="background-image:url('./texture-noyer-gris.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Noyer Gris</span><span class="swatch-ref">SWD 2030</span></div></button>
-      <button class="swatch-card" data-lb-group="sols" data-lb-name="Cèdre" data-lb-ref="SWD 20062032" data-lb-cat="Sol PVC bois" data-lb-img="./texture-cedre.jpg"><div class="swatch-img tall" style="background-image:url('./texture-cedre.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Cèdre</span><span class="swatch-ref">SWD 2032</span></div></button>
-      <button class="swatch-card" data-lb-group="sols" data-lb-name="Chêne Clair" data-lb-ref="SWD 20062033" data-lb-cat="Sol PVC bois" data-lb-img="./texture-chene-clair.jpg"><div class="swatch-img tall" style="background-image:url('./texture-chene-clair.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Chêne Clair</span><span class="swatch-ref">SWD 2033</span></div></button>
-      <button class="swatch-card" data-lb-group="sols" data-lb-name="Chêne Brun" data-lb-ref="SWD 20062029" data-lb-cat="Sol PVC bois" data-lb-img="./texture-chene-brun.jpg"><div class="swatch-img tall" style="background-image:url('./texture-chene-brun.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Chêne Brun</span><span class="swatch-ref">SWD 2029</span></div></button>
-      <button class="swatch-card" data-lb-group="sols" data-lb-name="Chêne Fumé" data-lb-ref="SWD 20062028" data-lb-cat="Sol PVC bois" data-lb-img="./texture-chene-fume.jpg"><div class="swatch-img tall" style="background-image:url('./texture-chene-fume.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Chêne Fumé</span><span class="swatch-ref">SWD 2028</span></div></button>
+      <button class="swatch-card" data-lb-group="sols" data-lb-name="Pin Blanc" data-lb-ref="SWD 20062202" data-lb-cat="Sol PVC bois" data-lb-img="assets/texture-pin-blanc.jpg"><div class="swatch-img tall" style="background-image:url('assets/texture-pin-blanc.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Pin Blanc</span><span class="swatch-ref">SWD 2202</span></div></button>
+      <button class="swatch-card" data-lb-group="sols" data-lb-name="Paulownia" data-lb-ref="SWD 20062031" data-lb-cat="Sol PVC bois" data-lb-img="assets/texture-paulownia.jpg"><div class="swatch-img tall" style="background-image:url('assets/texture-paulownia.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Paulownia</span><span class="swatch-ref">SWD 2031</span></div></button>
+      <button class="swatch-card" data-lb-group="sols" data-lb-name="Érable" data-lb-ref="SWD 20062027" data-lb-cat="Sol PVC bois" data-lb-img="assets/texture-erable.jpg"><div class="swatch-img tall" style="background-image:url('assets/texture-erable.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Érable</span><span class="swatch-ref">SWD 2027</span></div></button>
+      <button class="swatch-card" data-lb-group="sols" data-lb-name="Noyer Gris" data-lb-ref="SWD 20062030" data-lb-cat="Sol PVC bois" data-lb-img="assets/texture-noyer-gris.jpg"><div class="swatch-img tall" style="background-image:url('assets/texture-noyer-gris.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Noyer Gris</span><span class="swatch-ref">SWD 2030</span></div></button>
+      <button class="swatch-card" data-lb-group="sols" data-lb-name="Cèdre" data-lb-ref="SWD 20062032" data-lb-cat="Sol PVC bois" data-lb-img="assets/texture-cedre.jpg"><div class="swatch-img tall" style="background-image:url('assets/texture-cedre.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Cèdre</span><span class="swatch-ref">SWD 2032</span></div></button>
+      <button class="swatch-card" data-lb-group="sols" data-lb-name="Chêne Clair" data-lb-ref="SWD 20062033" data-lb-cat="Sol PVC bois" data-lb-img="assets/texture-chene-clair.jpg"><div class="swatch-img tall" style="background-image:url('assets/texture-chene-clair.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Chêne Clair</span><span class="swatch-ref">SWD 2033</span></div></button>
+      <button class="swatch-card" data-lb-group="sols" data-lb-name="Chêne Brun" data-lb-ref="SWD 20062029" data-lb-cat="Sol PVC bois" data-lb-img="assets/texture-chene-brun.jpg"><div class="swatch-img tall" style="background-image:url('assets/texture-chene-brun.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Chêne Brun</span><span class="swatch-ref">SWD 2029</span></div></button>
+      <button class="swatch-card" data-lb-group="sols" data-lb-name="Chêne Fumé" data-lb-ref="SWD 20062028" data-lb-cat="Sol PVC bois" data-lb-img="assets/texture-chene-fume.jpg"><div class="swatch-img tall" style="background-image:url('assets/texture-chene-fume.jpg')"><div class="magnify">+</div></div><div class="swatch-info"><span class="swatch-name">Chêne Fumé</span><span class="swatch-ref">SWD 2028</span></div></button>
     </div>
   </div>
 </section>
@@ -1258,6 +1287,145 @@ section { position: relative; }
   </div>
 </section>
 
+
+
+<!-- 15 · CONFIGURATEUR -->
+<section id="configurateur" class="config" data-screen-label="15 Votre sélection">
+  <div class="s-pad">
+    <div class="swatch-head">
+      <div>
+        <div class="eyebrow">Chapitre XV · Personnalisation</div>
+        <h2 class="h-section" style="margin-top:20px">Votre <em>sélection.</em></h2>
+        <p style="margin-top:16px;font-size:14px;color:var(--gris-moyen);line-height:1.6;max-width:520px;">Composez votre projet idéal. Renseignez vos coordonnées puis envoyez — nous vous recontactons par WhatsApp pour affiner.</p>
+      </div>
+    </div>
+
+    <div class="config-wrap" style="margin-top:48px;">
+      <div class="config-steps">
+
+        <!-- Coordonnées -->
+        <div class="config-step" style="padding-bottom:24px;border-bottom:1px solid var(--gris-clair);">
+          <div class="lab"><span class="n">0</span><span class="q">Vos coordonnées</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px;">
+            <input id="cfg-nom" type="text" placeholder="Votre nom" style="width:100%;padding:11px 14px;border:1px solid var(--gris-clair);background:#fff;font-family:inherit;font-size:14px;outline:none;color:var(--noir);" />
+            <input id="cfg-tel" type="tel" placeholder="Téléphone (+596...)" style="width:100%;padding:11px 14px;border:1px solid var(--gris-clair);background:#fff;font-family:inherit;font-size:14px;outline:none;color:var(--noir);" />
+          </div>
+        </div>
+
+        <!-- 1 Modèle -->
+        <div class="config-step" data-summary="modele">
+          <div class="lab"><span class="n">1</span><span class="q">Modèle</span></div>
+          <div class="config-opts cols2" style="margin-top:8px;">
+            <button class="config-pill" data-cfg="modele" data-cfg-name="Le grand 74 m²" data-cfg-meta="74 m²"><span class="pname">Le grand</span><span class="pmeta">74 m²</span></button>
+            <button class="config-pill" data-cfg="modele" data-cfg-name="L'intermédiaire 56 m²" data-cfg-meta="56 m²"><span class="pname">L'intermédiaire</span><span class="pmeta">56 m²</span></button>
+            <button class="config-pill" data-cfg="modele" data-cfg-name="Le compact 37 m²" data-cfg-meta="37 m²"><span class="pname">Le compact</span><span class="pmeta">37 m²</span></button>
+            <button class="config-pill" data-cfg="modele" data-cfg-name="L'unité minimale 20 m²" data-cfg-meta="20 m²"><span class="pname">L'unité minimale</span><span class="pmeta">20 m²</span></button>
+          </div>
+        </div>
+
+        <!-- 2 Couleur extérieure -->
+        <div class="config-step" data-summary="couleurExt">
+          <div class="lab"><span class="n">2</span><span class="q">Couleur extérieure</span></div>
+          <div class="config-tabs" data-tabs style="margin-top:8px;">
+            <button class="active" data-tab="incluses">Incluses</button>
+            <button data-tab="payantes">Options +</button>
+          </div>
+          <div data-pane="incluses" class="tab-pane active" style="margin-top:10px;">
+            <div class="config-opts cols4 config-opts-img">
+            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Blanc" data-cfg-meta="Inclus"><img src="assets/ext-blanc-anthracite.jpg" alt="" loading="lazy"/><span>Blanc</span></button>
+            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois Clair" data-cfg-meta="Inclus"><img src="assets/ext-bois-clair.jpg" alt="" loading="lazy"/><span>Bois Clair</span></button>
+            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Anthracite Uni" data-cfg-meta="Inclus"><img src="assets/ext-anthracite.jpg" alt="" loading="lazy"/><span>Anthracite</span></button>
+            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois Foncé" data-cfg-meta="Inclus"><img src="assets/ext-bois-fonce.jpg" alt="" loading="lazy"/><span>Bois Foncé</span></button>
+            </div>
+          </div>
+          <div data-pane="payantes" class="tab-pane" style="margin-top:10px;">
+            <div class="config-opts cols5 config-opts-img">
+            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Façade Bois" data-cfg-meta="Option"><img src="assets/tex-bois-gm-18.jpg" alt="" loading="lazy"/><span>Bois</span></button>
+            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Façade Brique" data-cfg-meta="Option"><img src="assets/tex-brique-gm-02.jpg" alt="" loading="lazy"/><span>Brique</span></button>
+            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Lames Horizontales" data-cfg-meta="Option"><img src="assets/tex-bardage-gm-88.jpg" alt="" loading="lazy"/><span>Lames</span></button>
+            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Façade Texturée" data-cfg-meta="Option"><img src="assets/tex-orange-gm-50.jpg" alt="" loading="lazy"/><span>Texturée</span></button>
+            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Façade Plane" data-cfg-meta="Option"><img src="assets/tex-plat-gm-64.jpg" alt="" loading="lazy"/><span>Plane</span></button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 Sol PVC -->
+        <div class="config-step" data-summary="sol">
+          <div class="lab"><span class="n">3</span><span class="q">Sol intérieur PVC</span></div>
+          <div class="config-opts cols4 config-opts-img" style="margin-top:8px;">
+            <button class="config-pill config-pill-img" data-cfg="sol" data-cfg-name="Pin Blanc"><img src="assets/texture-pin-blanc.jpg" alt="" loading="lazy"/><span>Pin Blanc</span></button>
+            <button class="config-pill config-pill-img" data-cfg="sol" data-cfg-name="Paulownia"><img src="assets/texture-paulownia.jpg" alt="" loading="lazy"/><span>Paulownia</span></button>
+            <button class="config-pill config-pill-img" data-cfg="sol" data-cfg-name="Érable"><img src="assets/texture-erable.jpg" alt="" loading="lazy"/><span>Érable</span></button>
+            <button class="config-pill config-pill-img" data-cfg="sol" data-cfg-name="Noyer Gris"><img src="assets/texture-noyer-gris.jpg" alt="" loading="lazy"/><span>Noyer Gris</span></button>
+            <button class="config-pill config-pill-img" data-cfg="sol" data-cfg-name="Cèdre"><img src="assets/texture-cedre.jpg" alt="" loading="lazy"/><span>Cèdre</span></button>
+            <button class="config-pill config-pill-img" data-cfg="sol" data-cfg-name="Chêne Clair"><img src="assets/texture-chene-clair.jpg" alt="" loading="lazy"/><span>Chêne Clair</span></button>
+            <button class="config-pill config-pill-img" data-cfg="sol" data-cfg-name="Chêne Brun"><img src="assets/texture-chene-brun.jpg" alt="" loading="lazy"/><span>Chêne Brun</span></button>
+            <button class="config-pill config-pill-img" data-cfg="sol" data-cfg-name="Chêne Fumé"><img src="assets/texture-chene-fume.jpg" alt="" loading="lazy"/><span>Chêne Fumé</span></button>
+          </div>
+        </div>
+
+        <!-- 4 Teinte intérieure -->
+        <div class="config-step" data-summary="interieur">
+          <div class="lab"><span class="n">4</span><span class="q">Teinte murale intérieure</span></div>
+          <div class="config-opts cols5" style="margin-top:8px;">
+            <button class="config-pill config-pill-color sw-int-creme" data-cfg="interieur" data-cfg-name="Crème Lumière"><span class="pcap">Crème</span></button>
+            <button class="config-pill config-pill-color sw-int-lin" data-cfg="interieur" data-cfg-name="Lin Naturel"><span class="pcap">Lin</span></button>
+            <button class="config-pill config-pill-color sw-int-sable" data-cfg="interieur" data-cfg-name="Sable Grège"><span class="pcap">Sable</span></button>
+            <button class="config-pill config-pill-color sw-int-perle" data-cfg="interieur" data-cfg-name="Gris Perle"><span class="pcap">Perle</span></button>
+            <button class="config-pill config-pill-color sw-int-blanc" data-cfg="interieur" data-cfg-name="Blanc Cassé"><span class="pcap">Blanc</span></button>
+          </div>
+        </div>
+
+        <!-- 5 Terrasse -->
+        <div class="config-step" data-summary="terrasse">
+          <div class="lab"><span class="n">5</span><span class="q">Sol terrasse</span></div>
+          <div class="config-opts cols4" style="margin-top:8px;">
+            <button class="config-pill config-pill-color sw-ter-terracotta" data-cfg="terrasse" data-cfg-name="Terracotta"><span class="pcap">Terracotta</span></button>
+            <button class="config-pill config-pill-color sw-ter-teck" data-cfg="terrasse" data-cfg-name="Teck Naturel"><span class="pcap">Teck</span></button>
+            <button class="config-pill config-pill-color sw-ter-anthracite" data-cfg="terrasse" data-cfg-name="Anthracite"><span class="pcap">Anthracite</span></button>
+            <button class="config-pill config-pill-color sw-ter-chocolat" data-cfg="terrasse" data-cfg-name="Chocolat"><span class="pcap">Chocolat</span></button>
+          </div>
+        </div>
+
+        <!-- 6 Marbre SdB -->
+        <div class="config-step" data-summary="marbre">
+          <div class="lab"><span class="n">6</span><span class="q">Carrelage salle de bain</span></div>
+          <div class="config-opts cols3" style="margin-top:8px;">
+            <button class="config-pill" data-cfg="marbre" data-cfg-name="Blanc Statuaire"><span class="pname">Blanc Statuaire</span><span class="pmeta">T·001</span></button>
+            <button class="config-pill" data-cfg="marbre" data-cfg-name="Gris Impérial"><span class="pname">Gris Impérial</span><span class="pmeta">T·002</span></button>
+            <button class="config-pill" data-cfg="marbre" data-cfg-name="Gris Perle"><span class="pname">Gris Perle</span><span class="pmeta">T·003</span></button>
+            <button class="config-pill" data-cfg="marbre" data-cfg-name="Gris Brume"><span class="pname">Gris Brume</span><span class="pmeta">T·004</span></button>
+            <button class="config-pill" data-cfg="marbre" data-cfg-name="Noir Marquina"><span class="pname">Noir Marquina</span><span class="pmeta">T·005</span></button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Récapitulatif -->
+      <div class="config-card">
+        <div class="eyebrow" style="margin-bottom:20px;">Récapitulatif</div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div data-summary="modele"     class="cfg-line"><span class="cfg-lb">Modèle</span><span class="sv empty">— à choisir</span></div>
+          <div data-summary="couleurExt" class="cfg-line"><span class="cfg-lb">Couleur ext.</span><span class="sv empty">— à choisir</span></div>
+          <div data-summary="sol"        class="cfg-line"><span class="cfg-lb">Sol PVC</span><span class="sv empty">— à choisir</span></div>
+          <div data-summary="interieur"  class="cfg-line"><span class="cfg-lb">Teinte murale</span><span class="sv empty">— à choisir</span></div>
+          <div data-summary="terrasse"   class="cfg-line"><span class="cfg-lb">Sol terrasse</span><span class="sv empty">— à choisir</span></div>
+          <div data-summary="marbre"     class="cfg-line"><span class="cfg-lb">Carrelage SdB</span><span class="sv empty">— à choisir</span></div>
+        </div>
+        <div style="padding-top:20px;margin-top:4px;">
+          <button id="cfg-submit-btn" class="config-cta" style="width:100%;">
+            <span>Envoyer ma sélection <span class="cta-count" style="opacity:.5">0/6</span></span>
+            <span class="arr">→</span>
+          </button>
+          <div id="cfg-success" style="display:none;margin-top:16px;padding:16px;background:#f0f7f0;border:1px solid #c3e0c3;font-size:13px;line-height:1.6;color:#2d6a2d;">
+            ✅ <strong>Sélection envoyée !</strong><br>Vous allez être redirigé vers WhatsApp. Notre équipe vous recontacte sous 24h.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 
 <!-- 16 · CONTACT -->
@@ -1454,79 +1622,6 @@ section { position: relative; }
     if (e.key === 'ArrowRight') { lbIdx = (lbIdx + 1) % lbGroup.length; paintLb(); }
   });
 
-  /* ---------- CONFIGURATEUR ---------- */
-  const config = {
-    modele: null,
-    couleurExt: null,
-    sol: null,
-    interieur: null,
-    terrasse: null,
-  };
-  const labels = {
-    modele: 'Modèle',
-    couleurExt: 'Couleur extérieure',
-    sol: 'Sol PVC',
-    interieur: 'Teinte intérieure',
-    terrasse: 'Sol terrasse',
-  };
-  const TOTAL_STEPS = Object.keys(config).length;
-
-  function updateSummary() {
-    document.querySelectorAll('[data-summary]').forEach(el => {
-      const key = el.dataset.summary;
-      const v = config[key];
-      const vEl = el.querySelector('.sv');
-      if (v) {
-        vEl.textContent = v.name + (v.meta ? ` · ${v.meta}` : '');
-        vEl.classList.remove('empty');
-      } else {
-        vEl.textContent = '— à choisir';
-        vEl.classList.add('empty');
-      }
-    });
-    const cta = document.querySelector('.config-cta');
-    if (cta) {
-      const count = Object.values(config).filter(Boolean).length;
-      cta.querySelector('.cta-count').textContent = count + '/' + TOTAL_STEPS;
-    }
-  }
-
-  document.querySelectorAll('[data-cfg]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const key = btn.dataset.cfg;
-      const name = btn.dataset.cfgName;
-      const meta = btn.dataset.cfgMeta || '';
-      // toggle off if same value selected again
-      if (config[key] && config[key].name === name) {
-        config[key] = null;
-      } else {
-        config[key] = { name, meta };
-      }
-      // sync active state across ALL controls for this key (includes both tabs panes — enforces single-pick mutual exclusion)
-      document.querySelectorAll(`[data-cfg="${key}"]`).forEach(b => {
-        const same = config[key] && b.dataset.cfgName === config[key].name;
-        b.classList.toggle('active', !!same);
-      });
-      updateSummary();
-    });
-  });
-
-  /* ---------- CONFIG TABS (incluses / payantes) ---------- */
-  document.querySelectorAll('[data-tabs]').forEach(tabs => {
-    tabs.querySelectorAll('button[data-tab]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const pane = btn.dataset.tab;
-        tabs.querySelectorAll('button[data-tab]').forEach(b => b.classList.toggle('active', b === btn));
-        // panes are siblings of the .config-tabs element — scope to the parent step
-        const step = tabs.closest('.config-step');
-        if (!step) return;
-        step.querySelectorAll('[data-pane]').forEach(p => p.classList.toggle('active', p.dataset.pane === pane));
-      });
-    });
-  });
-
-  ;
-  });
   setSwatchSize(TWEAK_DEFAULTS.swatchSize || 'M');
 
   const twClose = twPanel && twPanel.querySelector('.close');
@@ -1538,5 +1633,95 @@ section { position: relative; }
 
 </script>
 <script>document.addEventListener('contextmenu',e=>e.preventDefault());document.addEventListener('dragstart',e=>e.preventDefault());</script>
+<script>
+/* ============================================================
+   CONFIGURATEUR — scope global (sélection + envoi)
+============================================================ */
+var cfgState = { modele:null, couleurExt:null, sol:null, interieur:null, terrasse:null, marbre:null };
+var CFG_TOTAL = 6;
+var MAKE_WEBHOOK = 'https://hook.eu1.make.com/e2je6575cz0mqpcx56z3lyrhd4e2brkj';
+var WA_NUMBER = '596696451048';
+
+function cfgUpdateSummary() {
+  document.querySelectorAll('[data-summary]').forEach(function(el){
+    var v = cfgState[el.dataset.summary];
+    var vEl = el.querySelector('.sv');
+    if (!vEl) return;
+    if (v) { vEl.textContent = v.name + (v.meta ? ' · ' + v.meta : ''); vEl.classList.remove('empty'); }
+    else   { vEl.textContent = '— à choisir'; vEl.classList.add('empty'); }
+  });
+  var count = Object.values(cfgState).filter(Boolean).length;
+  document.querySelectorAll('.cta-count').forEach(function(el){ el.textContent = count + '/' + CFG_TOTAL; });
+}
+
+/* Sélection — délégation (marche même si le tap touche <img>/<span>) */
+document.addEventListener('click', function(e){
+  var btn = e.target.closest('[data-cfg]');
+  if (!btn) return;
+  var key = btn.dataset.cfg, name = btn.dataset.cfgName, meta = btn.dataset.cfgMeta || '';
+  if (!key || !name) return;
+  if (cfgState[key] && cfgState[key].name === name) { cfgState[key] = null; }
+  else { cfgState[key] = { name:name, meta:meta }; }
+  document.querySelectorAll('[data-cfg="' + key + '"]').forEach(function(b){
+    var same = cfgState[key] && b.dataset.cfgName === cfgState[key].name;
+    b.classList.toggle('active', !!same);
+  });
+  cfgUpdateSummary();
+});
+
+/* Onglets incluses / options */
+document.addEventListener('click', function(e){
+  var tabBtn = e.target.closest('[data-tabs] [data-tab]');
+  if (!tabBtn) return;
+  var tabs = tabBtn.closest('[data-tabs]'), step = tabBtn.closest('.config-step'), pane = tabBtn.dataset.tab;
+  tabs.querySelectorAll('[data-tab]').forEach(function(b){ b.classList.toggle('active', b === tabBtn); });
+  if (!step) return;
+  step.querySelectorAll('[data-pane]').forEach(function(p){ p.classList.toggle('active', p.dataset.pane === pane); });
+});
+
+/* Envoi : Notion (Make) + WhatsApp */
+document.addEventListener('click', function(e){
+  var cta = e.target.closest('#cfg-submit-btn');
+  if (!cta) return;
+  var nom = (document.getElementById('cfg-nom')||{}).value ? document.getElementById('cfg-nom').value.trim() : '';
+  var tel = (document.getElementById('cfg-tel')||{}).value ? document.getElementById('cfg-tel').value.trim() : '';
+  var get = function(k){ return cfgState[k] ? cfgState[k].name + (cfgState[k].meta ? ' · ' + cfgState[k].meta : '') : ''; };
+
+  if (!nom || !tel) { alert('Merci de renseigner votre nom et votre téléphone.'); return; }
+  if (!cfgState.modele) { alert('Merci de choisir au moins un modèle.'); return; }
+
+  var payload = {
+    nom_client: nom, telephone: tel,
+    modele: get('modele'), couleur_ext: get('couleurExt'),
+    sol_interieur: get('sol'), teinte_murale: get('interieur'),
+    terrasse: get('terrasse'), carrelage_sdb: get('marbre'),
+    date: new Date().toISOString()
+  };
+
+  try {
+    fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+  } catch (err) { console.warn('Webhook:', err); }
+
+  var msg = encodeURIComponent(
+    "🏠 *Nouvelle sélection Matth's Houses*\n\n" +
+    '👤 *Client :* ' + nom + '\n📞 *Tél :* ' + tel + '\n\n' +
+    '🏡 *Modèle :* ' + (get('modele') || '—') + '\n' +
+    '🎨 *Couleur ext. :* ' + (get('couleurExt') || '—') + '\n' +
+    '🪵 *Sol PVC :* ' + (get('sol') || '—') + '\n' +
+    '🖌️ *Teinte murale :* ' + (get('interieur') || '—') + '\n' +
+    '🏗️ *Sol terrasse :* ' + (get('terrasse') || '—') + '\n' +
+    '🛁 *Carrelage SdB :* ' + (get('marbre') || '—')
+  );
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
+
+  var ok = document.getElementById('cfg-success');
+  if (ok) ok.style.display = 'block';
+  cta.disabled = true;
+  cta.style.opacity = '0.5';
+});
+
+cfgUpdateSummary();
+</script>
+
 </body>
 </html>
