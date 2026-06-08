@@ -1796,16 +1796,14 @@ document.addEventListener('click', function(e){
     date: new Date().toISOString()
   };
 
-  /* text/plain évite le preflight CORS ; keepalive garantit l'envoi même si
-     window.open() déclenche une navigation (mobile WhatsApp) */
+  /* mode:no-cors = la requête est envoyée sans preflight, le navigateur
+     n'a pas besoin de lire la réponse. Fiable depuis GitHub Pages. */
   fetch(MAKE_WEBHOOK, {
     method: 'POST',
-    headers: { 'Content-Type': 'text/plain' },
+    mode: 'no-cors',
     body: JSON.stringify(payload),
     keepalive: true
-  })
-    .then(function(r){ if(!r.ok) console.warn('Webhook HTTP ' + r.status); })
-    .catch(function(err){ console.warn('Webhook erreur réseau:', err); });
+  }).catch(function(err){ console.warn('Webhook:', err); });
 
   var msg = encodeURIComponent(
     "🏠 *Nouvelle sélection Matth's Houses*\n\n" +
