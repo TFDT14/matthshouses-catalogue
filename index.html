@@ -1796,9 +1796,9 @@ document.addEventListener('click', function(e){
     date: new Date().toISOString()
   };
 
-  try {
-    fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
-  } catch (err) { console.warn('Webhook:', err); }
+  fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+    .then(function(r){ if(!r.ok) console.warn('Webhook HTTP ' + r.status); })
+    .catch(function(err){ console.warn('Webhook erreur réseau:', err); });
 
   var msg = encodeURIComponent(
     "🏠 *Nouvelle sélection Matth's Houses*\n\n" +
