@@ -775,6 +775,40 @@ section { position: relative; }
   .config-pill-img img { height: 64px; }
 }
 
+/* ---- Correction cascade : config-pill { background:#fff } efface les dégradés sw-*.
+        Ces règles à double-classe (spécif. 0,2,0) prennent la priorité. ---- */
+.config-pill-color.sw-int-creme    { background: linear-gradient(135deg, #f4ecdb 0%, #ead9bb 100%); }
+.config-pill-color.sw-int-lin      { background: linear-gradient(135deg, #e3d4b6 0%, #c9b48a 100%); }
+.config-pill-color.sw-int-sable    { background: linear-gradient(135deg, #cdb893 0%, #a89272 100%); }
+.config-pill-color.sw-int-perle    { background: linear-gradient(135deg, #cfcbc1 0%, #a8a499 100%); }
+.config-pill-color.sw-int-blanc    { background: #f0ece4; }
+.config-pill-color.sw-ter-terracotta { background: linear-gradient(135deg, #b3543a 0%, #8c3e26 100%); }
+.config-pill-color.sw-ter-teck       { background: linear-gradient(135deg, #a5784a 0%, #7a5530 100%); }
+.config-pill-color.sw-ter-anthracite { background: linear-gradient(135deg, #45474a 0%, #25272a 100%); }
+.config-pill-color.sw-ter-chocolat   { background: linear-gradient(135deg, #5a3e2a 0%, #3a2618 100%); }
+
+/* ---- Couleurs extérieures incluses (pastilles claires — 1 couleur par tuile) ---- */
+.sw-ext-blanc      { background: linear-gradient(135deg, #f4f0e8 0%, #ddd6c8 100%); }
+.sw-ext-bois-clair { background: linear-gradient(135deg, #c8a770 0%, #a08048 100%); }
+.sw-ext-anthracite { background: linear-gradient(135deg, #45474a 0%, #25272a 100%); }
+.sw-ext-bois-fonce { background: linear-gradient(135deg, #4a3020 0%, #2a1a0e 100%); }
+.config-pill-color.sw-ext-blanc      { background: linear-gradient(135deg, #f4f0e8 0%, #ddd6c8 100%); }
+.config-pill-color.sw-ext-bois-clair { background: linear-gradient(135deg, #c8a770 0%, #a08048 100%); }
+.config-pill-color.sw-ext-anthracite { background: linear-gradient(135deg, #45474a 0%, #25272a 100%); }
+.config-pill-color.sw-ext-bois-fonce { background: linear-gradient(135deg, #4a3020 0%, #2a1a0e 100%); }
+
+/* ---- Marbres SdB ---- */
+.sw-mrb-blanc         { background: linear-gradient(135deg, #f7f4ef 0%, #e0dbd3 100%); }
+.sw-mrb-gris-imperial { background: linear-gradient(135deg, #7a7c80 0%, #585b5f 100%); }
+.sw-mrb-gris-perle    { background: linear-gradient(135deg, #b8bcbf 0%, #9ba0a4 100%); }
+.sw-mrb-gris-brume    { background: linear-gradient(135deg, #a4a9ad 0%, #878d91 100%); }
+.sw-mrb-noir-marquina { background: linear-gradient(135deg, #1c1e22 0%, #2d3036 100%); }
+.config-pill-color.sw-mrb-blanc         { background: linear-gradient(135deg, #f7f4ef 0%, #e0dbd3 100%); }
+.config-pill-color.sw-mrb-gris-imperial { background: linear-gradient(135deg, #7a7c80 0%, #585b5f 100%); }
+.config-pill-color.sw-mrb-gris-perle    { background: linear-gradient(135deg, #b8bcbf 0%, #9ba0a4 100%); }
+.config-pill-color.sw-mrb-gris-brume    { background: linear-gradient(135deg, #a4a9ad 0%, #878d91 100%); }
+.config-pill-color.sw-mrb-noir-marquina { background: linear-gradient(135deg, #1c1e22 0%, #2d3036 100%); }
+
 </style>
 <style>.sw-int-blanc { background-color: #f0ece4; }</style>
 <style id="viewer-mode">
@@ -1331,11 +1365,11 @@ section { position: relative; }
             <button data-tab="payantes">Options +</button>
           </div>
           <div data-pane="incluses" class="tab-pane active" style="margin-top:10px;">
-            <div class="config-opts cols4 config-opts-img">
-            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Blanc" data-cfg-meta="Inclus"><img src="assets/ext-blanc-anthracite.jpg" alt="" loading="lazy"/><span>Blanc</span></button>
-            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois Clair" data-cfg-meta="Inclus"><img src="assets/ext-bois-clair.jpg" alt="" loading="lazy"/><span>Bois Clair</span></button>
-            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Anthracite Uni" data-cfg-meta="Inclus"><img src="assets/ext-anthracite.jpg" alt="" loading="lazy"/><span>Anthracite</span></button>
-            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois Foncé" data-cfg-meta="Inclus"><img src="assets/ext-bois-fonce.jpg" alt="" loading="lazy"/><span>Bois Foncé</span></button>
+            <div class="config-opts cols4">
+            <button class="config-pill config-pill-color sw-ext-blanc" data-cfg="couleurExt" data-cfg-name="Blanc" data-cfg-meta="Inclus"><span class="pcap">Blanc</span></button>
+            <button class="config-pill config-pill-color sw-ext-bois-clair" data-cfg="couleurExt" data-cfg-name="Bois Clair" data-cfg-meta="Inclus"><span class="pcap">Bois Clair</span></button>
+            <button class="config-pill config-pill-color sw-ext-anthracite" data-cfg="couleurExt" data-cfg-name="Anthracite Uni" data-cfg-meta="Inclus"><span class="pcap">Anthracite</span></button>
+            <button class="config-pill config-pill-color sw-ext-bois-fonce" data-cfg="couleurExt" data-cfg-name="Bois Foncé" data-cfg-meta="Inclus"><span class="pcap">Bois Foncé</span></button>
             </div>
           </div>
           <div data-pane="payantes" class="tab-pane" style="margin-top:10px;">
@@ -1390,12 +1424,12 @@ section { position: relative; }
         <!-- 6 Marbre SdB -->
         <div class="config-step" data-summary="marbre">
           <div class="lab"><span class="n">6</span><span class="q">Carrelage salle de bain</span></div>
-          <div class="config-opts cols3" style="margin-top:8px;">
-            <button class="config-pill" data-cfg="marbre" data-cfg-name="Blanc Statuaire"><span class="pname">Blanc Statuaire</span><span class="pmeta">T·001</span></button>
-            <button class="config-pill" data-cfg="marbre" data-cfg-name="Gris Impérial"><span class="pname">Gris Impérial</span><span class="pmeta">T·002</span></button>
-            <button class="config-pill" data-cfg="marbre" data-cfg-name="Gris Perle"><span class="pname">Gris Perle</span><span class="pmeta">T·003</span></button>
-            <button class="config-pill" data-cfg="marbre" data-cfg-name="Gris Brume"><span class="pname">Gris Brume</span><span class="pmeta">T·004</span></button>
-            <button class="config-pill" data-cfg="marbre" data-cfg-name="Noir Marquina"><span class="pname">Noir Marquina</span><span class="pmeta">T·005</span></button>
+          <div class="config-opts cols5" style="margin-top:8px;">
+            <button class="config-pill config-pill-color sw-mrb-blanc" data-cfg="marbre" data-cfg-name="Blanc Statuaire"><span class="pcap">T·001</span></button>
+            <button class="config-pill config-pill-color sw-mrb-gris-imperial" data-cfg="marbre" data-cfg-name="Gris Impérial"><span class="pcap">T·002</span></button>
+            <button class="config-pill config-pill-color sw-mrb-gris-perle" data-cfg="marbre" data-cfg-name="Gris Perle"><span class="pcap">T·003</span></button>
+            <button class="config-pill config-pill-color sw-mrb-gris-brume" data-cfg="marbre" data-cfg-name="Gris Brume"><span class="pcap">T·004</span></button>
+            <button class="config-pill config-pill-color sw-mrb-noir-marquina" data-cfg="marbre" data-cfg-name="Noir Marquina"><span class="pcap">T·005</span></button>
           </div>
         </div>
 
