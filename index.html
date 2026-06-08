@@ -809,6 +809,16 @@ section { position: relative; }
 .config-pill-color.sw-mrb-gris-brume    { background: linear-gradient(135deg, #a4a9ad 0%, #878d91 100%); }
 .config-pill-color.sw-mrb-noir-marquina { background: linear-gradient(135deg, #1c1e22 0%, #2d3036 100%); }
 
+/* ---- Étiquettes de groupe dans OPTIONS+ ---- */
+.config-group-label {
+  font-size: 9px; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gris-moyen); font-weight: 500;
+  margin: 14px 0 8px; padding: 0;
+  font-family: inherit; display: block;
+  border-bottom: 1px solid var(--gris-clair); padding-bottom: 6px;
+}
+.config-group-label:first-child { margin-top: 0; }
+
 </style>
 <style>.sw-int-blanc { background-color: #f0ece4; }</style>
 <style id="viewer-mode">
@@ -1373,12 +1383,66 @@ section { position: relative; }
             </div>
           </div>
           <div data-pane="payantes" class="tab-pane" style="margin-top:10px;">
-            <div class="config-opts cols5 config-opts-img">
-            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Façade Bois" data-cfg-meta="Option"><img src="assets/tex-bois-gm-18.jpg" alt="" loading="lazy"/><span>Bois</span></button>
-            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Façade Brique" data-cfg-meta="Option"><img src="assets/tex-brique-gm-02.jpg" alt="" loading="lazy"/><span>Brique</span></button>
-            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Lames Horizontales" data-cfg-meta="Option"><img src="assets/tex-bardage-gm-88.jpg" alt="" loading="lazy"/><span>Lames</span></button>
-            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Façade Texturée" data-cfg-meta="Option"><img src="assets/tex-orange-gm-50.jpg" alt="" loading="lazy"/><span>Texturée</span></button>
-            <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Façade Plane" data-cfg-meta="Option"><img src="assets/tex-plat-gm-64.jpg" alt="" loading="lazy"/><span>Plane</span></button>
+            <span class="config-group-label">Bois · 9 finitions</span>
+            <div class="config-opts cols4 config-opts-img" style="margin-bottom:4px;">
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois · Pin Clair"><img src="assets/tex-bois-gm-16.jpg" alt="" loading="lazy"/><span>Pin Clair</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois · Chêne Doré"><img src="assets/tex-bois-gm-17.jpg" alt="" loading="lazy"/><span>Chêne Doré</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois · Acajou"><img src="assets/tex-bois-gm-18.jpg" alt="" loading="lazy"/><span>Acajou</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois · Chêne Rustique"><img src="assets/tex-bois-gm-19.jpg" alt="" loading="lazy"/><span>Chêne Rustique</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois · Bois Miel"><img src="assets/tex-bois-gm-20.jpg" alt="" loading="lazy"/><span>Bois Miel</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois · Wengé"><img src="assets/tex-bois-gm-21.jpg" alt="" loading="lazy"/><span>Wengé</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois · Érable Clair"><img src="assets/tex-bois-gm-22.jpg" alt="" loading="lazy"/><span>Érable Clair</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois · Olivier"><img src="assets/tex-bois-gm-23.jpg" alt="" loading="lazy"/><span>Olivier</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Bois · Cèdre Rouge"><img src="assets/tex-bois-gm-24.jpg" alt="" loading="lazy"/><span>Cèdre Rouge</span></button>
+            </div>
+            <span class="config-group-label">Brique · 6 finitions</span>
+            <div class="config-opts cols4 config-opts-img" style="margin-bottom:4px;">
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Brique · Blanc Pur"><img src="assets/tex-brique-gm-01.jpg" alt="" loading="lazy"/><span>Blanc Pur</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Brique · Ivoire"><img src="assets/tex-brique-gm-02.jpg" alt="" loading="lazy"/><span>Ivoire</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Brique · Rose Poudré"><img src="assets/tex-brique-gm-03.jpg" alt="" loading="lazy"/><span>Rose Poudré</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Brique · Beige Doré"><img src="assets/tex-brique-gm-04.jpg" alt="" loading="lazy"/><span>Beige Doré</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Brique · Sable Désert"><img src="assets/tex-brique-gm-05.jpg" alt="" loading="lazy"/><span>Sable Désert</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Brique · Gris Pierre"><img src="assets/tex-brique-gm-06.jpg" alt="" loading="lazy"/><span>Gris Pierre</span></button>
+            </div>
+            <span class="config-group-label">Lames · 7 finitions</span>
+            <div class="config-opts cols4 config-opts-img" style="margin-bottom:4px;">
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Lames · Pin Orangé"><img src="assets/tex-bardage-gm-86.jpg" alt="" loading="lazy"/><span>Pin Orangé</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Lames · Acajou Veiné"><img src="assets/tex-bardage-gm-87.jpg" alt="" loading="lazy"/><span>Acajou Veiné</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Lames · Gris Clair"><img src="assets/tex-bardage-gm-88.jpg" alt="" loading="lazy"/><span>Gris Clair</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Lames · Gris Urbain"><img src="assets/tex-bardage-gm-89.jpg" alt="" loading="lazy"/><span>Gris Urbain</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Lames · Blanc Pur"><img src="assets/tex-bardage-gm-90.jpg" alt="" loading="lazy"/><span>Blanc Pur</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Lames · Bleu Pâle"><img src="assets/tex-bardage-gm-91.jpg" alt="" loading="lazy"/><span>Bleu Pâle</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Lames · Bicolore Noir"><img src="assets/tex-bardage-gm-92.jpg" alt="" loading="lazy"/><span>Bicolore Noir</span></button>
+            </div>
+            <span class="config-group-label">Texturée · 16 finitions</span>
+            <div class="config-opts cols4 config-opts-img" style="margin-bottom:4px;">
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Blanc Texturé"><img src="assets/tex-orange-gm-44.jpg" alt="" loading="lazy"/><span>Blanc Texturé</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Beige Sablé"><img src="assets/tex-orange-gm-45.jpg" alt="" loading="lazy"/><span>Beige Sablé</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Anthracite"><img src="assets/tex-orange-gm-46.jpg" alt="" loading="lazy"/><span>Anthracite</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Jaune Désert"><img src="assets/tex-orange-gm-47.jpg" alt="" loading="lazy"/><span>Jaune Désert</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Bleu Marine"><img src="assets/tex-orange-gm-48.jpg" alt="" loading="lazy"/><span>Bleu Marine</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Rouge Brique"><img src="assets/tex-orange-gm-49.jpg" alt="" loading="lazy"/><span>Rouge Brique</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Camo. Désert"><img src="assets/tex-orange-gm-50.jpg" alt="" loading="lazy"/><span>Camo. Désert</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Camo. Forêt"><img src="assets/tex-orange-gm-51.jpg" alt="" loading="lazy"/><span>Camo. Forêt</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Brun Rainuré"><img src="assets/tex-orange-gm-52.jpg" alt="" loading="lazy"/><span>Brun Rainuré</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Gris Rainuré"><img src="assets/tex-orange-gm-53.jpg" alt="" loading="lazy"/><span>Gris Rainuré</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Beige Rainuré"><img src="assets/tex-orange-gm-54.jpg" alt="" loading="lazy"/><span>Beige Rainuré</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Bois Rainuré"><img src="assets/tex-orange-gm-55.jpg" alt="" loading="lazy"/><span>Bois Rainuré</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Blanc Rainuré"><img src="assets/tex-orange-gm-56.jpg" alt="" loading="lazy"/><span>Blanc Rainuré</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Doré Rainuré"><img src="assets/tex-orange-gm-57.jpg" alt="" loading="lazy"/><span>Doré Rainuré</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Anthracite Texturé"><img src="assets/tex-orange-gm-58.jpg" alt="" loading="lazy"/><span>Anthracite Texturé</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Texturée · Rose Texturé"><img src="assets/tex-orange-gm-59.jpg" alt="" loading="lazy"/><span>Rose Texturé</span></button>
+            </div>
+            <span class="config-group-label">Plane · 8 finitions</span>
+            <div class="config-opts cols4 config-opts-img">
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Plane · Blanc Pur"><img src="assets/tex-plat-gm-61.jpg" alt="" loading="lazy"/><span>Blanc Pur</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Plane · Ivoire"><img src="assets/tex-plat-gm-62.jpg" alt="" loading="lazy"/><span>Ivoire</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Plane · Gris Clair"><img src="assets/tex-plat-gm-63.jpg" alt="" loading="lazy"/><span>Gris Clair</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Plane · Bleu Ardoise"><img src="assets/tex-plat-gm-64.jpg" alt="" loading="lazy"/><span>Bleu Ardoise</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Plane · Anthracite Rainuré"><img src="assets/tex-plat-gm-65.jpg" alt="" loading="lazy"/><span>Anthracite Rainuré</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Plane · Blanc Rainuré"><img src="assets/tex-plat-gm-66.jpg" alt="" loading="lazy"/><span>Blanc Rainuré</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Plane · Pierre Argentée"><img src="assets/tex-plat-gm-67.jpg" alt="" loading="lazy"/><span>Pierre Argentée</span></button>
+              <button class="config-pill config-pill-img" data-cfg="couleurExt" data-cfg-name="Plane · Lin Tissé"><img src="assets/tex-plat-gm-68.jpg" alt="" loading="lazy"/><span>Lin Tissé</span></button>
             </div>
           </div>
         </div>
