@@ -1796,7 +1796,14 @@ document.addEventListener('click', function(e){
     date: new Date().toISOString()
   };
 
-  fetch(MAKE_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) })
+  /* text/plain évite le preflight CORS ; keepalive garantit l'envoi même si
+     window.open() déclenche une navigation (mobile WhatsApp) */
+  fetch(MAKE_WEBHOOK, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload),
+    keepalive: true
+  })
     .then(function(r){ if(!r.ok) console.warn('Webhook HTTP ' + r.status); })
     .catch(function(err){ console.warn('Webhook erreur réseau:', err); });
 
